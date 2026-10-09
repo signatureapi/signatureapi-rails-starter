@@ -1,0 +1,38 @@
+<main>
+  <header>
+    <h1>Send an agreement</h1>
+    <p class="hint">A SignatureAPI e-signature API example for Rails. Test mode: no emails are sent.</p>
+  </header>
+
+  <section class="card">
+    <h2>New agreement</h2>
+    <%= form_with url: agreements_path do %>
+      <label>Signer name <%= text_field_tag :signer_name, params[:signer_name], required: true, autocomplete: "off" %></label>
+      <label>Signer email <%= email_field_tag :signer_email, params[:signer_email], required: true, autocomplete: "off" %></label>
+      <button type="submit">Send for signature</button>
+    <% end %>
+    <% if @error %>
+      <p class="error" role="alert">Could not create the envelope: <%= @error %></p>
+    <% end %>
+  </section>
+
+  <section class="card">
+    <h2>Agreements</h2>
+    <table>
+      <thead><tr><th>Signer</th><th>Status</th><th>Sent</th><th></th></tr></thead>
+      <tbody>
+        <% @agreements.each do |agreement| %>
+          <tr data-agreement-id="<%= agreement.id %>" data-envelope-id="<%= agreement.envelope_id %>">
+            <td class="signer"><strong><%= agreement.signer_name %></strong><%= agreement.signer_email %></td>
+            <td><span class="status status-<%= agreement.status %>" data-status="<%= agreement.status %>"><%= agreement.status.capitalize %></span></td>
+            <td><%= agreement.created_at.strftime("%Y-%m-%d %H:%M") %></td>
+            <td><% if agreement.completed? %><%= link_to "Signed PDF", signed_pdf_agreement_path(agreement) %><% end %></td>
+          </tr>
+        <% end %>
+        <% if @agreements.none? %>
+          <tr><td colspan="4" class="empty">No agreements yet.</td></tr>
+        <% end %>
+      </tbody>
+    </table>
+  </section>
+</main>

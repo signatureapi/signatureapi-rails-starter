@@ -1,0 +1,14 @@
+{
+  "extraKnownMarketplaces": {
+    "signatureapi": {
+      "source": {
+        "source": "github",
+        "repo": "signatureapi/skills",
+        "ref": "93c02a9f1336952b0da9c71a2da2f0024e8afaaa"
+      }
+    }
+  },
+  "enabledPlugins": {
+    "signatureapi@signatureapi": true
+  }
+}

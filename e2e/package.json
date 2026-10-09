@@ -1,0 +1,19 @@
+{
+  "name": "signatureapi-example-e2e",
+  "version": "1.0.0",
+  "private": true,
+  "description": "End-to-end test: send an agreement from the example app, sign it in a real test-mode ceremony, and see the webhook mark it completed.",
+  "type": "module",
+  "scripts": {
+    "test": "playwright test",
+    "record": "sh scripts/record.sh",
+    "typecheck": "tsc -p tsconfig.json",
+    "install-browsers": "playwright install chromium"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.55.0",
+    "@types/node": "^24.0.0",
+    "typescript": "^5.9.0"
+  },
+  "license": "MIT"
+}
