@@ -7,7 +7,7 @@ gem "sqlite3", ">= 2.1"
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", ">= 5.0"
 # Verify SignatureAPI webhook signatures [https://github.com/standard-webhooks/standard-webhooks]
-gem "standardwebhooks", "~> 1.1"
+gem "standardwebhooks", "~> 1.3"
 
 # Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
 # gem "bcrypt", "~> 3.1.7"
